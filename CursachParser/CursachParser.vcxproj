@@ -137,6 +137,7 @@
   <ItemGroup>
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="OuterForm.cpp" />
+    <ClCompile Include="tinyxml2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GlobalClass.h" />
@@ -146,6 +147,7 @@
     <ClInclude Include="OuterForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="tinyxml2.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainForm.resx">
