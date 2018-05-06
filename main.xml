@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<restaurants>
+	<place>McDonald&apos;s
+		<menu>КАРТОХА
+			<price>100</price>
+			<content>мука</content>
+			<content>соль</content>
+		</menu>
+		<menu>ЧИЗБУРГЕР
+			<price>100</price>
+			<content>мясо</content>
+			<content>кетчуп</content>
+		</menu>
+	</place>
+</restaurants>

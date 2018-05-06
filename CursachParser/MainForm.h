@@ -142,15 +142,17 @@ namespace CursachParser {
 
 
 	private: System::Void BeginButton_Click(System::Object^  sender, System::EventArgs^  e) {
+
+		ContentTextBox->Text = GlobalClass::GetXML();
 		OuterForm^OuterForm_obj = gcnew OuterForm();
-		this->Hide();
+		//this->Hide();
 		OuterForm_obj->ShowDialog();
-		this->Show();
+		//this->Show();
 	}
 
 	private: System::Void MainForm_Load(System::Object^  sender, System::EventArgs^  e) {
-		GlobalClass::XMLFileGlobalPatch = "example1.xml";
-		GlobalClass::GetXML();
+		//GlobalClass::XMLFileGlobalPatch = "example1.xml";
+		//GlobalClass::GetXML();
 	}
 };
 }

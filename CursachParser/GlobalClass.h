@@ -19,30 +19,36 @@ namespace Globals
 		
 		static String^ XMLFileGlobalPatch;
 
-		static void GetXML()
+
+		
+
+		static String^ GetXML()
 		{
 			XMLDocument doc;
-			doc.LoadFile("../dream.xml");
+			doc.LoadFile("../main.xml");
 
-			// Structure of the XML file:
-			// - Element "PLAY"      the root Element, which is the
-			//                       FirstChildElement of the Document
-			// - - Element "TITLE"   child of the root PLAY Element
-			// - - - Text            child of the TITLE Element
+			XMLElement* textNode = doc.FirstChildElement("restaurants")->FirstChildElement("place");
 
-			// Navigate to the title, using the convenience function,
-			// with a dangerous lack of error checking.
-			const char* title = doc.FirstChildElement("PLAY")->FirstChildElement("TITLE")->GetText();
-		
-			String^ clistr = gcnew String(title);
-			MessageBox::Show("Name of play (1):"+ clistr +"\n");
+			for (XMLElement* e = textNode->FirstChildElement("menu"); e != NULL; e = e->NextSiblingElement("menu")) {
 
-			// Text is just another Node to TinyXML-2. The more
-			// general way to get to the XMLText:
-			XMLText* textNode = doc.FirstChildElement("PLAY")->FirstChildElement("TITLE")->FirstChild()->ToText();
-			title = textNode->Value();
-			String^ clistr1 = gcnew String(title);
-			MessageBox::Show("Name of play (2): "+ clistr1 +"\n");
+				const char* title = e->GetText();
+				String^ clistr1 = gcnew String(title);
+				MessageBox::Show(clistr1);
+
+			}
+
+			return "LOL";
+			/*
+			for (XMLElement* e = textNode->FirstChildElement("menu"); e != NULL; e = e->NextSiblingElement("menu"))
+			{
+				const char* title = e->Value();
+				String^ clistr = gcnew String(title);
+				MessageBox::Show(clistr);
+
+
+
+			}
+			*/
 		}
 
 	};
