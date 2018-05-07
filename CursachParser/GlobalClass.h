@@ -19,19 +19,20 @@ namespace Globals
 		
 		static String^ XMLFileGlobalPatch;
 
-
 		
 
 		static String^ GetXML()
 		{
 			XMLDocument doc;
 			doc.LoadFile("../main.xml");
+			//doc.NewDeclaration("UTF-8");
 
 			XMLElement* textNode = doc.FirstChildElement("restaurants")->FirstChildElement("place");
 
-			for (XMLElement* e = textNode->FirstChildElement("menu"); e != NULL; e = e->NextSiblingElement("menu")) {
+			for (XMLElement* e = textNode->FirstChildElement("menu"); e != NULL; e = e->NextSiblingElement("menu"))
+			{
 
-				const char* title = e->GetText();
+				const char* title = e->FirstChildElement("price")->GetText();
 				String^ clistr1 = gcnew String(title);
 				MessageBox::Show(clistr1);
 
