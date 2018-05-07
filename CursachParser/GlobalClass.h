@@ -18,11 +18,14 @@ namespace Globals
 	public:
 		
 		static String^ XMLFileGlobalPatch;
-
+		static array<String^> ^ SplitStringArray;
 		
 
 		static String^ GetXML(int your_price)
 		{
+			for each(String^ temp in SplitStringArray)
+				MessageBox::Show(temp);
+			
 			XMLDocument doc;
 			doc.LoadFile("../main.xml");
 			//doc.NewDeclaration("UTF-8");
@@ -34,6 +37,7 @@ namespace Globals
 					String^ clistr = gcnew String(title);
 					if (System::Convert::ToInt32(clistr) <= your_price)
 						MessageBox::Show("Âîò öåíà íîðì!\n"+clistr);
+						//ÒÓÒ ÏÅÐÅÁÎÐ ÝËÅÌÅÍÒÎÂ ÌÀÑÑÈÂÀ
 				}
 
 			}

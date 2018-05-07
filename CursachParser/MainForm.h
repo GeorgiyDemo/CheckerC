@@ -143,19 +143,13 @@ namespace CursachParser {
 		}
 #pragma endregion
 	
-	array<String^>^ GridTableRow_array;
 	
 private: void StringSpliter(String^ str) {
-		array<String^> ^StringArray = str->Split(',');
-
-		for each(String^ temp in StringArray)
-			MessageBox::Show(temp);
-
+		GlobalClass::SplitStringArray = str->Split(',');
 	}
 
 	private: System::Void BeginButton_Click(System::Object^  sender, System::EventArgs^  e) {
 		
-
 		StringSpliter(ContentTextBox->Text);
 		ContentTextBox->Text = GlobalClass::GetXML(System::Convert::ToInt32(PriceTextBox->Text));
 		OuterForm^OuterForm_obj = gcnew OuterForm();
