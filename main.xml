@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <restaurants>
 	<place>McDonald&apos;s
@@ -8,7 +8,29 @@
 			<content>соль</content>
 		</menu>
 		<menu>ЧИЗБУРГЕР
-			<price>100</price>
+			<price>10000</price>
+			<content>мясо</content>
+			<content>кетчуп</content>
+		</menu>
+		<menu>БИГ МАК
+			<price>1000</price>
+			<content>мясо</content>
+			<content>кетчуп</content>
+		</menu>
+	</place>
+	<place>BRAT
+		<menu>POTATO
+			<price>1</price>
+			<content>мука</content>
+			<content>соль</content>
+		</menu>
+		<menu>CHEESEBURGER
+			<price>2</price>
+			<content>мясо</content>
+			<content>кетчуп</content>
+		</menu>
+		<menu>БИГ МАК
+			<price>3</price>
 			<content>мясо</content>
 			<content>кетчуп</content>
 		</menu>

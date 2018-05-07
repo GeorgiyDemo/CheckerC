@@ -41,6 +41,9 @@ namespace CursachParser {
 	protected:
 	private: System::Windows::Forms::Label^  ContentLabel;
 	private: System::Windows::Forms::TextBox^  PriceTextBox;
+
+	private:
+
 	private: System::Windows::Forms::TextBox^  ContentTextBox;
 	private: System::Windows::Forms::GroupBox^  MainGroupBox;
 	private: System::Windows::Forms::Button^  BeginButton;
@@ -139,11 +142,22 @@ namespace CursachParser {
 
 		}
 #pragma endregion
+	
+	array<String^>^ GridTableRow_array;
+	
+private: void StringSpliter(String^ str) {
+		array<String^> ^StringArray = str->Split(',');
 
+		for each(String^ temp in StringArray)
+			MessageBox::Show(temp);
+
+	}
 
 	private: System::Void BeginButton_Click(System::Object^  sender, System::EventArgs^  e) {
+		
 
-		ContentTextBox->Text = GlobalClass::GetXML();
+		StringSpliter(ContentTextBox->Text);
+		ContentTextBox->Text = GlobalClass::GetXML(System::Convert::ToInt32(PriceTextBox->Text));
 		OuterForm^OuterForm_obj = gcnew OuterForm();
 		//this->Hide();
 		OuterForm_obj->ShowDialog();

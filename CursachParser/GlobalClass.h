@@ -21,12 +21,25 @@ namespace Globals
 
 		
 
-		static String^ GetXML()
+		static String^ GetXML(int your_price)
 		{
 			XMLDocument doc;
 			doc.LoadFile("../main.xml");
 			//doc.NewDeclaration("UTF-8");
+			XMLElement* MainNode = doc.FirstChildElement("restaurants");
 
+			for (XMLElement* place = MainNode->FirstChildElement("place"); place != NULL; place = place->NextSiblingElement("place")) {
+				for (XMLElement* menu = place->FirstChildElement("menu"); menu != NULL; menu = menu->NextSiblingElement("menu")) {
+					const char* title = menu->FirstChildElement("price")->GetText();
+					String^ clistr = gcnew String(title);
+					if (System::Convert::ToInt32(clistr) <= your_price)
+						MessageBox::Show("Вот цена норм!\n"+clistr);
+				}
+
+			}
+			
+
+			/*
 			XMLElement* textNode = doc.FirstChildElement("restaurants")->FirstChildElement("place");
 
 			for (XMLElement* e = textNode->FirstChildElement("menu"); e != NULL; e = e->NextSiblingElement("menu"))
@@ -37,7 +50,7 @@ namespace Globals
 				MessageBox::Show(clistr1);
 
 			}
-
+			*/
 			return "LOL";
 			/*
 			for (XMLElement* e = textNode->FirstChildElement("menu"); e != NULL; e = e->NextSiblingElement("menu"))
