@@ -9,30 +9,30 @@
 		</menu>
 		<menu>ЧИЗБУРГЕР
 			<price>10000</price>
-			<content>мясо</content>
-			<content>кетчуп</content>
+			<content>MYASO</content>
+			<content>KETCHUP</content>
 		</menu>
 		<menu>БИГ МАК
 			<price>1000</price>
-			<content>мясо</content>
-			<content>кетчуп</content>
+			<content>MYASO1</content>
+			<content>KETCHUP1</content>
 		</menu>
 	</place>
-	<place>BRAT
+	<place>BRAT&apos;s
 		<menu>POTATO
 			<price>1</price>
-			<content>мука</content>
-			<content>соль</content>
+			<content>MEOW1</content>
+			<content>MEOW2</content>
 		</menu>
 		<menu>CHEESEBURGER
 			<price>2</price>
-			<content>мясо</content>
-			<content>кетчуп</content>
+			<content>MEOW3</content>
+			<content>MEOW4</content>
 		</menu>
 		<menu>БИГ МАК
 			<price>3</price>
-			<content>мясо</content>
-			<content>кетчуп</content>
+			<content>MEOW5</content>
+			<content>MEOW6</content>
 		</menu>
 	</place>
 </restaurants>

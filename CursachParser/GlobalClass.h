@@ -37,13 +37,23 @@ namespace Globals
 					String^ clistr = gcnew String(title);
 					if (System::Convert::ToInt32(clistr) <= your_price) {
 						//MessageBox::Show("¬от цена норм!" + clistr);
+					
 						XMLElement* FoodContent = menu;
-						for (XMLElement* FoodContent = menu; FoodContent != NULL; FoodContent = FoodContent->NextSiblingElement("content")) {
-							const char* FoodContenttitle = FoodContent->GetText();
-							String^ clistr1 = gcnew String(FoodContenttitle);
-							RETURN_STR += "\n" + clistr1 + "цена: " + clistr + "\n";
-							//MessageBox::Show(clistr1);
+
+						const char* FoodContenttitle = FoodContent->GetText();
+						String^ clistr1 = gcnew String(FoodContenttitle);
+
+						String^ content = "";
+						for (XMLElement* FoodContent = menu->FirstChildElement("content"); FoodContent != NULL; FoodContent = FoodContent->NextSiblingElement("content")) {
+							const char* FoodContenttitle1 = FoodContent->GetText();
+							String^ clistr2 = gcnew String(FoodContenttitle1);
+							content += "\nХ "+clistr2;
+							MessageBox::Show(clistr2);
+
+							
+
 						}
+						RETURN_STR += "\n" + clistr1 + "÷ена: " + clistr +" "+ content + "\n";
 
 					}
 
