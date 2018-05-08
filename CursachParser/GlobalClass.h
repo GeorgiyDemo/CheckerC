@@ -32,28 +32,41 @@ namespace Globals
 			XMLElement* MainNode = doc.FirstChildElement("restaurants");
 
 			for (XMLElement* place = MainNode->FirstChildElement("place"); place != NULL; place = place->NextSiblingElement("place")) {
+				
+				XMLElement* maintitle = place;
+
+				const char* Charmainttitle = maintitle->GetText();
+				String^ Stringmainttitle = gcnew String(Charmainttitle);
+				MessageBox::Show(Stringmainttitle);
+
 				for (XMLElement* menu = place->FirstChildElement("menu"); menu != NULL; menu = menu->NextSiblingElement("menu")) {
 					const char* title = menu->FirstChildElement("price")->GetText();
 					String^ clistr = gcnew String(title);
 					if (System::Convert::ToInt32(clistr) <= your_price) {
-						//MessageBox::Show("¬от цена норм!" + clistr);
-					
+				
 						XMLElement* FoodContent = menu;
 
 						const char* FoodContenttitle = FoodContent->GetText();
 						String^ clistr1 = gcnew String(FoodContenttitle);
 
 						String^ content = "";
+						bool FlagChecker = false;
 						for (XMLElement* FoodContent = menu->FirstChildElement("content"); FoodContent != NULL; FoodContent = FoodContent->NextSiblingElement("content")) {
 							const char* FoodContenttitle1 = FoodContent->GetText();
 							String^ clistr2 = gcnew String(FoodContenttitle1);
+
+							for each(String^ ArrString in SplitStringArray)
+								if (ArrString == clistr2) {
+									FlagChecker = true;
+									MessageBox::Show(ArrString);
+								}
+
 							content += "\nХ "+clistr2;
 							MessageBox::Show(clistr2);
 
-							
-
 						}
-						RETURN_STR += "\n" + clistr1 + "÷ена: " + clistr +" "+ content + "\n";
+						if (FlagChecker == true)
+						RETURN_STR += "\n"+ Stringmainttitle +": "+ clistr1 + "÷ена: " + clistr +" "+ content + "\n";
 
 					}
 
@@ -61,6 +74,7 @@ namespace Globals
 				}
 
 			}
+			
 			MessageBox::Show(RETURN_STR);
 			return RETURN_STR;
 		
