@@ -2,10 +2,10 @@
 
 <restaurants>
 	<place>McDonald&apos;s
-		<menu>КАРТОХА
+		<menu>KAPTOXA
 			<price>100</price>
-			<content>мука</content>
-			<content>соль</content>
+			<content>MUKA</content>
+			<content>SOL</content>
 		</menu>
 		<menu>ЧИЗБУРГЕР
 			<price>10000</price>

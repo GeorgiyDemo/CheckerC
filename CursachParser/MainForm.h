@@ -151,11 +151,12 @@ private: void StringSpliter(String^ str) {
 	private: System::Void BeginButton_Click(System::Object^  sender, System::EventArgs^  e) {
 		
 		StringSpliter(ContentTextBox->Text);
-		ContentTextBox->Text = GlobalClass::GetXML(System::Convert::ToInt32(PriceTextBox->Text));
+		//ContentTextBox->Text = GlobalClass::GetXML(System::Convert::ToInt32(PriceTextBox->Text));
 		OuterForm^OuterForm_obj = gcnew OuterForm();
-		//this->Hide();
+		OuterForm_obj->Outlabel->Text = GlobalClass::GetXML(System::Convert::ToInt32(PriceTextBox->Text));
+		this->Hide();
 		OuterForm_obj->ShowDialog();
-		//this->Show();
+		this->Show();
 	}
 
 	private: System::Void MainForm_Load(System::Object^  sender, System::EventArgs^  e) {

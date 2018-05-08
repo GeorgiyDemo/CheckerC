@@ -34,6 +34,12 @@ namespace CursachParser {
 				delete components;
 			}
 		}
+	public: System::Windows::Forms::Label^  Outlabel;
+	protected:
+
+	protected:
+
+	protected:
 
 	private:
 		/// <summary>
@@ -48,17 +54,29 @@ namespace CursachParser {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->Outlabel = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
+			// 
+			// Outlabel
+			// 
+			this->Outlabel->AutoSize = true;
+			this->Outlabel->Location = System::Drawing::Point(23, 30);
+			this->Outlabel->Name = L"Outlabel";
+			this->Outlabel->Size = System::Drawing::Size(52, 13);
+			this->Outlabel->TabIndex = 2;
+			this->Outlabel->Text = L"Outlabel1";
 			// 
 			// OuterForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(284, 261);
+			this->Controls->Add(this->Outlabel);
 			this->Name = L"OuterForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Результаты подбора";
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion

@@ -23,50 +23,37 @@ namespace Globals
 
 		static String^ GetXML(int your_price)
 		{
+			String^ RETURN_STR = "";
 			for each(String^ temp in SplitStringArray)
 				MessageBox::Show(temp);
 			
 			XMLDocument doc;
 			doc.LoadFile("../main.xml");
-			//doc.NewDeclaration("UTF-8");
 			XMLElement* MainNode = doc.FirstChildElement("restaurants");
 
 			for (XMLElement* place = MainNode->FirstChildElement("place"); place != NULL; place = place->NextSiblingElement("place")) {
 				for (XMLElement* menu = place->FirstChildElement("menu"); menu != NULL; menu = menu->NextSiblingElement("menu")) {
 					const char* title = menu->FirstChildElement("price")->GetText();
 					String^ clistr = gcnew String(title);
-					if (System::Convert::ToInt32(clistr) <= your_price)
-						MessageBox::Show("Âîò öåíà íîðì!\n"+clistr);
-						//ÒÓÒ ÏÅÐÅÁÎÐ ÝËÅÌÅÍÒÎÂ ÌÀÑÑÈÂÀ
+					if (System::Convert::ToInt32(clistr) <= your_price) {
+						//MessageBox::Show("Âîò öåíà íîðì!" + clistr);
+						XMLElement* FoodContent = menu;
+						for (XMLElement* FoodContent = menu; FoodContent != NULL; FoodContent = FoodContent->NextSiblingElement("content")) {
+							const char* FoodContenttitle = FoodContent->GetText();
+							String^ clistr1 = gcnew String(FoodContenttitle);
+							RETURN_STR += "\n" + clistr1 + "öåíà: " + clistr + "\n";
+							//MessageBox::Show(clistr1);
+						}
+
+					}
+
+						
 				}
 
 			}
-			
-
-			/*
-			XMLElement* textNode = doc.FirstChildElement("restaurants")->FirstChildElement("place");
-
-			for (XMLElement* e = textNode->FirstChildElement("menu"); e != NULL; e = e->NextSiblingElement("menu"))
-			{
-
-				const char* title = e->FirstChildElement("price")->GetText();
-				String^ clistr1 = gcnew String(title);
-				MessageBox::Show(clistr1);
-
-			}
-			*/
-			return "LOL";
-			/*
-			for (XMLElement* e = textNode->FirstChildElement("menu"); e != NULL; e = e->NextSiblingElement("menu"))
-			{
-				const char* title = e->Value();
-				String^ clistr = gcnew String(title);
-				MessageBox::Show(clistr);
-
-
-
-			}
-			*/
+			MessageBox::Show(RETURN_STR);
+			return RETURN_STR;
+		
 		}
 
 	};
