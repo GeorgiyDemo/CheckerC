@@ -1,8 +1,10 @@
+#include "GlobalClass.h"
 #pragma once
 
 namespace CursachParser {
 
 	using namespace System;
+	using namespace Globals;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
 	using namespace System::Windows::Forms;
@@ -35,6 +37,11 @@ namespace CursachParser {
 			}
 		}
 	public: System::Windows::Forms::Label^  Outlabel;
+	public: System::Windows::Forms::DataGridView^  OutDataGridView;
+
+	public:
+
+	public:
 	protected:
 
 	protected:
@@ -55,6 +62,8 @@ namespace CursachParser {
 		void InitializeComponent(void)
 		{
 			this->Outlabel = (gcnew System::Windows::Forms::Label());
+			this->OutDataGridView = (gcnew System::Windows::Forms::DataGridView());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->OutDataGridView))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// Outlabel
@@ -66,19 +75,33 @@ namespace CursachParser {
 			this->Outlabel->TabIndex = 2;
 			this->Outlabel->Text = L"Outlabel1";
 			// 
+			// OutDataGridView
+			// 
+			this->OutDataGridView->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->OutDataGridView->Location = System::Drawing::Point(243, 88);
+			this->OutDataGridView->Name = L"OutDataGridView";
+			this->OutDataGridView->Size = System::Drawing::Size(351, 230);
+			this->OutDataGridView->TabIndex = 3;
+			// 
 			// OuterForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(284, 261);
+			this->ClientSize = System::Drawing::Size(620, 426);
+			this->Controls->Add(this->OutDataGridView);
 			this->Controls->Add(this->Outlabel);
 			this->Name = L"OuterForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Результаты подбора";
+			this->Load += gcnew System::EventHandler(this, &OuterForm::OuterForm_Load);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->OutDataGridView))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
+	private: System::Void OuterForm_Load(System::Object^  sender, System::EventArgs^  e) {
+		OutDataGridView->DataSource = GlobalClass::DataGridExample();
+	}
 	};
 }

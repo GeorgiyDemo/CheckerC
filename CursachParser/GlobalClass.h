@@ -1,3 +1,4 @@
+#include <cliext/vector>
 #include <regex>
 #include "tinyxml2.h"
 #pragma once
@@ -12,6 +13,7 @@ namespace Globals
 	using namespace System::Data;
 	using namespace System::Text;
 	using namespace System::Drawing;
+	using namespace cliext;
 
 	public ref class GlobalClass
 	{
@@ -23,7 +25,9 @@ namespace Globals
 
 		static String^ GetXML(int your_price)
 		{
+
 			String^ RETURN_STR = "";
+
 			for each(String^ temp in SplitStringArray)
 				MessageBox::Show(temp);
 			
@@ -78,6 +82,26 @@ namespace Globals
 			MessageBox::Show(RETURN_STR);
 			return RETURN_STR;
 		
+		}
+
+		static DataTable^ DataGridExample() {
+
+			DataTable ^table;
+			DataColumn ^column;
+			DataRow ^row;
+			String^ RETURN_STR = "";
+
+			vector<String^>^ nameColumns = gcnew vector<String^>();
+			table = gcnew DataTable();
+			nameColumns->push_back("Название");
+			column = gcnew DataColumn(nameColumns->at(0), String::typeid);
+			table->Columns->Add(column);
+
+			row = table->NewRow();
+			row[nameColumns->at(0)] = "TEST";
+			table->Rows->Add(row);
+
+			return table;
 		}
 
 	};
