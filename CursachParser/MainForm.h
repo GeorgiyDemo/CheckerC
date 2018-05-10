@@ -151,6 +151,7 @@ private: void StringSpliter(String^ str) {
 		StringSpliter(ContentTextBox->Text);
 		OuterForm^OuterForm_obj = gcnew OuterForm();
 		OuterForm_obj->OutDataGridView->DataSource = GlobalClass::GetXML(System::Convert::ToInt32(PriceTextBox->Text));
+		OuterForm_obj->OutLabel->Text = "Подбор результатов с максимальной ценой " + PriceTextBox->Text + " и ингредиентами " + ContentTextBox->Text;
 		this->Hide();
 		OuterForm_obj->ShowDialog();
 		this->Show();

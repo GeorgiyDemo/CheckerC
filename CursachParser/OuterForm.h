@@ -36,7 +36,11 @@ namespace CursachParser {
 				delete components;
 			}
 		}
-	public: System::Windows::Forms::Label^  Outlabel;
+	public: System::Windows::Forms::Label^  OutLabel;
+	protected:
+
+	protected:
+
 	public: System::Windows::Forms::DataGridView^  OutDataGridView;
 
 	public:
@@ -61,35 +65,38 @@ namespace CursachParser {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->Outlabel = (gcnew System::Windows::Forms::Label());
+			this->OutLabel = (gcnew System::Windows::Forms::Label());
 			this->OutDataGridView = (gcnew System::Windows::Forms::DataGridView());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->OutDataGridView))->BeginInit();
 			this->SuspendLayout();
 			// 
-			// Outlabel
+			// OutLabel
 			// 
-			this->Outlabel->AutoSize = true;
-			this->Outlabel->Location = System::Drawing::Point(23, 30);
-			this->Outlabel->Name = L"Outlabel";
-			this->Outlabel->Size = System::Drawing::Size(52, 13);
-			this->Outlabel->TabIndex = 2;
-			this->Outlabel->Text = L"Outlabel1";
+			this->OutLabel->AutoSize = true;
+			this->OutLabel->Location = System::Drawing::Point(23, 30);
+			this->OutLabel->Name = L"OutLabel";
+			this->OutLabel->Size = System::Drawing::Size(293, 13);
+			this->OutLabel->TabIndex = 2;
+			this->OutLabel->Text = L"Подбор результатов с максимальной ценой и составом";
 			// 
 			// OutDataGridView
 			// 
+			this->OutDataGridView->BackgroundColor = System::Drawing::SystemColors::Menu;
+			this->OutDataGridView->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->OutDataGridView->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::Raised;
 			this->OutDataGridView->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->OutDataGridView->Location = System::Drawing::Point(243, 88);
+			this->OutDataGridView->Location = System::Drawing::Point(26, 66);
 			this->OutDataGridView->Name = L"OutDataGridView";
-			this->OutDataGridView->Size = System::Drawing::Size(351, 230);
+			this->OutDataGridView->Size = System::Drawing::Size(549, 300);
 			this->OutDataGridView->TabIndex = 3;
 			// 
 			// OuterForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(620, 426);
+			this->ClientSize = System::Drawing::Size(608, 405);
 			this->Controls->Add(this->OutDataGridView);
-			this->Controls->Add(this->Outlabel);
+			this->Controls->Add(this->OutLabel);
 			this->Name = L"OuterForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Результаты подбора";

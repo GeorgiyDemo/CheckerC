@@ -30,7 +30,7 @@ namespace Globals
 			DataColumn ^column;
 			DataRow ^row;
 
-			array<String^> ^ NameColumnsArray = { "Название заведения","Блюдо", "Цена", "Состав" };
+			array<String^> ^ NameColumnsArray = { "Название заведения","Блюдо", "Цена", "Ингредиенты" };
 
 			vector<String^>^ nameColumns = gcnew vector<String^>();
 			
@@ -41,10 +41,6 @@ namespace Globals
 				column = gcnew DataColumn(nameColumns->at(i), String::typeid);
 				table->Columns->Add(column);
 			}
-
-
-			for each(String^ temp in SplitStringArray)
-				MessageBox::Show(temp);
 			
 			XMLDocument doc;
 			doc.LoadFile("../main.xml");
@@ -56,7 +52,6 @@ namespace Globals
 
 				const char* Charmainttitle = maintitle->GetText();
 				String^ Stringmainttitle = gcnew String(Charmainttitle);
-				MessageBox::Show(Stringmainttitle);
 
 				for (XMLElement* menu = place->FirstChildElement("menu"); menu != NULL; menu = menu->NextSiblingElement("menu")) {
 					const char* title = menu->FirstChildElement("price")->GetText();
@@ -70,19 +65,18 @@ namespace Globals
 
 						String^ content = "";
 						bool FlagChecker = false;
+						int IntFlagIteration = 0;
 						for (XMLElement* FoodContent = menu->FirstChildElement("content"); FoodContent != NULL; FoodContent = FoodContent->NextSiblingElement("content")) {
 							const char* FoodContenttitle1 = FoodContent->GetText();
 							String^ clistr2 = gcnew String(FoodContenttitle1);
 
 							for each(String^ ArrString in SplitStringArray)
-								if (ArrString == clistr2) {
+								if (ArrString == clistr2)
 									FlagChecker = true;
-									MessageBox::Show(ArrString);
-								}
-
-							content += ","+clistr2;
-							MessageBox::Show(clistr2);
-
+							
+							content += (IntFlagIteration != 0) ? ", " + clistr2 : clistr2;
+							//content += ","+clistr2;
+							IntFlagIteration++;
 						}
 						if (FlagChecker == true) {
 							row = table->NewRow();
@@ -103,39 +97,6 @@ namespace Globals
 			
 			return table;
 		
-		}
-
-		static DataTable^ DataGridExample() {
-
-			DataTable ^table;
-			DataColumn ^column;
-			DataRow ^row;
-
-			array<String^> ^ NameColumnsArray = {"Название заведения","Блюдо", "Состав"};
-
-			vector<String^>^ nameColumns = gcnew vector<String^>();
-			table = gcnew DataTable();
-
-			for (int i = 0; i < (NameColumnsArray->Length); i++) {
-				nameColumns->push_back(NameColumnsArray[i]);
-				column = gcnew DataColumn(nameColumns->at(i), String::typeid);
-				table->Columns->Add(column);
-			}
-
-			////
-
-
-			
-			//table = gcnew DataTable();
-			//nameColumns->push_back("Название");
-			//column = gcnew DataColumn(nameColumns->at(0), String::typeid);
-			//table->Columns->Add(column);
-
-			row = table->NewRow();
-			row[nameColumns->at(0)] = "TEST";
-			table->Rows->Add(row);
-
-			return table;
 		}
 
 	};
