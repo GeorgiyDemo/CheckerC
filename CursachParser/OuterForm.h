@@ -93,15 +93,11 @@ namespace CursachParser {
 			this->Name = L"OuterForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Результаты подбора";
-			this->Load += gcnew System::EventHandler(this, &OuterForm::OuterForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->OutDataGridView))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	private: System::Void OuterForm_Load(System::Object^  sender, System::EventArgs^  e) {
-		OutDataGridView->DataSource = GlobalClass::DataGridExample();
-	}
 	};
 }

@@ -135,14 +135,12 @@ namespace CursachParser {
 			this->Name = L"MainForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Подбор заведения";
-			this->Load += gcnew System::EventHandler(this, &MainForm::MainForm_Load);
 			this->MainGroupBox->ResumeLayout(false);
 			this->MainGroupBox->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
-	
 	
 private: void StringSpliter(String^ str) {
 		GlobalClass::SplitStringArray = str->Split(',');
@@ -151,17 +149,12 @@ private: void StringSpliter(String^ str) {
 	private: System::Void BeginButton_Click(System::Object^  sender, System::EventArgs^  e) {
 		
 		StringSpliter(ContentTextBox->Text);
-		//ContentTextBox->Text = GlobalClass::GetXML(System::Convert::ToInt32(PriceTextBox->Text));
 		OuterForm^OuterForm_obj = gcnew OuterForm();
-		OuterForm_obj->Outlabel->Text = GlobalClass::GetXML(System::Convert::ToInt32(PriceTextBox->Text));
+		OuterForm_obj->OutDataGridView->DataSource = GlobalClass::GetXML(System::Convert::ToInt32(PriceTextBox->Text));
 		this->Hide();
 		OuterForm_obj->ShowDialog();
 		this->Show();
 	}
 
-	private: System::Void MainForm_Load(System::Object^  sender, System::EventArgs^  e) {
-		//GlobalClass::XMLFileGlobalPatch = "example1.xml";
-		//GlobalClass::GetXML();
-	}
 };
 }
