@@ -11,7 +11,6 @@ namespace Globals
 	using namespace System::Collections;
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
-	using namespace System::Text;
 	using namespace System::Drawing;
 	using namespace cliext;
 
@@ -20,6 +19,20 @@ namespace Globals
 	public:
 		
 		static array<String^> ^ SplitStringArray;
+
+		static String^ UTF8Converter(const char* InputChar) {
+			std::string s = InputChar;
+			char const* buffer = s.c_str();
+	
+			cli::array<System::Byte>^ a = gcnew cli::array<System::Byte>(s.length());
+			int i = s.length();
+			while (i-- != 0) 
+				a[i] = buffer[i];
+
+			String^ meow = System::Text::Encoding::UTF8->GetString(a);
+			return  meow;
+		}
+
 
 		static  DataTable^ GetXML(int your_price)
 		{
@@ -30,7 +43,7 @@ namespace Globals
 			DataColumn ^column;
 			DataRow ^row;
 
-			array<String^> ^ NameColumnsArray = { "Название заведения","Блюдо", "Цена", "Ингредиенты" };
+			array<String^> ^ NameColumnsArray = { "Название заведения","Блюдо", "Цена (руб.)", "Ингредиенты" };
 
 			vector<String^>^ nameColumns = gcnew vector<String^>();
 			
@@ -49,26 +62,28 @@ namespace Globals
 			for (XMLElement* place = MainNode->FirstChildElement("place"); place != NULL; place = place->NextSiblingElement("place")) {
 				
 				XMLElement* maintitle = place;
-
+				//Проблема перевода здесь
 				const char* Charmainttitle = maintitle->GetText();
-				String^ Stringmainttitle = gcnew String(Charmainttitle);
+	
+				String^ Stringmainttitle = UTF8Converter(Charmainttitle);
 
 				for (XMLElement* menu = place->FirstChildElement("menu"); menu != NULL; menu = menu->NextSiblingElement("menu")) {
 					const char* title = menu->FirstChildElement("price")->GetText();
-					String^ clistr = gcnew String(title);
+					String^ clistr = UTF8Converter(title);
 					if (System::Convert::ToInt32(clistr) <= your_price) {
 				
 						XMLElement* FoodContent = menu;
 
 						const char* FoodContenttitle = FoodContent->GetText();
-						String^ clistr1 = gcnew String(FoodContenttitle);
+
+						String^ clistr1 = UTF8Converter(FoodContenttitle);
 
 						String^ content = "";
 						bool FlagChecker = false;
 						int IntFlagIteration = 0;
 						for (XMLElement* FoodContent = menu->FirstChildElement("content"); FoodContent != NULL; FoodContent = FoodContent->NextSiblingElement("content")) {
 							const char* FoodContenttitle1 = FoodContent->GetText();
-							String^ clistr2 = gcnew String(FoodContenttitle1);
+							String^ clistr2 = UTF8Converter(FoodContenttitle1);
 
 							for each(String^ ArrString in SplitStringArray)
 								if (ArrString == clistr2)

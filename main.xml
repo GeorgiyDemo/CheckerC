@@ -2,23 +2,23 @@
 
 <restaurants>
 	<place>McDonald&apos;s
-		<menu>KAPTOXA
+		<menu>Картофель фри
 			<price>100</price>
-			<content>MUKA</content>
-			<content>SOL</content>
+			<content>Мука</content>
+			<content>Соль</content>
 		</menu>
 		<menu>ЧИЗБУРГЕР
 			<price>10000</price>
-			<content>MYASO</content>
-			<content>KETCHUP</content>
+			<content>мясо</content>
+			<content>кетчуп</content>
 		</menu>
 		<menu>БИГ МАК
 			<price>1000</price>
-			<content>MYASO</content>
-			<content>KETCHUP1</content>
+			<content>говядина</content>
+			<content>кетчуп</content>
 		</menu>
 	</place>
-	<place>BRAT&apos;s
+	<place>СОБАКА
 		<menu>POTATO
 			<price>1</price>
 			<content>MEOW1</content>
