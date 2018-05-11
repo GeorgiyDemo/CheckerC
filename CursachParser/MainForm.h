@@ -47,6 +47,7 @@ namespace CursachParser {
 	private: System::Windows::Forms::TextBox^  ContentTextBox;
 	private: System::Windows::Forms::GroupBox^  MainGroupBox;
 	private: System::Windows::Forms::Button^  BeginButton;
+	private: System::Windows::Forms::Button^  ExitButton;
 
 	private:
 		/// <summary>
@@ -61,12 +62,14 @@ namespace CursachParser {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(MainForm::typeid));
 			this->PriceLabel = (gcnew System::Windows::Forms::Label());
 			this->ContentLabel = (gcnew System::Windows::Forms::Label());
 			this->PriceTextBox = (gcnew System::Windows::Forms::TextBox());
 			this->ContentTextBox = (gcnew System::Windows::Forms::TextBox());
 			this->MainGroupBox = (gcnew System::Windows::Forms::GroupBox());
 			this->BeginButton = (gcnew System::Windows::Forms::Button());
+			this->ExitButton = (gcnew System::Windows::Forms::Button());
 			this->MainGroupBox->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -125,13 +128,25 @@ namespace CursachParser {
 			this->BeginButton->UseVisualStyleBackColor = true;
 			this->BeginButton->Click += gcnew System::EventHandler(this, &MainForm::BeginButton_Click);
 			// 
+			// ExitButton
+			// 
+			this->ExitButton->Location = System::Drawing::Point(37, 126);
+			this->ExitButton->Name = L"ExitButton";
+			this->ExitButton->Size = System::Drawing::Size(129, 29);
+			this->ExitButton->TabIndex = 6;
+			this->ExitButton->Text = L"Выход из программы";
+			this->ExitButton->UseVisualStyleBackColor = true;
+			this->ExitButton->Click += gcnew System::EventHandler(this, &MainForm::ExitButton_Click);
+			// 
 			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(416, 169);
+			this->Controls->Add(this->ExitButton);
 			this->Controls->Add(this->BeginButton);
 			this->Controls->Add(this->MainGroupBox);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"MainForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Подбор заведения";
@@ -151,11 +166,14 @@ private: void StringSpliter(String^ str) {
 		StringSpliter(ContentTextBox->Text);
 		OuterForm^OuterForm_obj = gcnew OuterForm();
 		OuterForm_obj->OutDataGridView->DataSource = GlobalClass::GetXML(System::Convert::ToInt32(PriceTextBox->Text));
-		OuterForm_obj->OutLabel->Text = "Подбор результатов с максимальной ценой " + PriceTextBox->Text + " и ингредиентами " + ContentTextBox->Text;
+		OuterForm_obj->OutLabel->Text = "Подбор результатов с максимальной ценой " + PriceTextBox->Text + " (руб.) и ингредиентами \"" + ContentTextBox->Text+"\"";
 		this->Hide();
 		OuterForm_obj->ShowDialog();
 		this->Show();
 	}
 
+	private: System::Void ExitButton_Click(System::Object^  sender, System::EventArgs^  e) {
+		this->Close();
+	}
 };
 }

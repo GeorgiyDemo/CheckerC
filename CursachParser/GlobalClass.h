@@ -44,7 +44,6 @@ namespace Globals
 			DataRow ^row;
 
 			array<String^> ^ NameColumnsArray = { "Название заведения","Блюдо", "Цена (руб.)", "Ингредиенты" };
-
 			vector<String^>^ nameColumns = gcnew vector<String^>();
 			
 			table = gcnew DataTable();
@@ -62,7 +61,6 @@ namespace Globals
 			for (XMLElement* place = MainNode->FirstChildElement("place"); place != NULL; place = place->NextSiblingElement("place")) {
 				
 				XMLElement* maintitle = place;
-				//Проблема перевода здесь
 				const char* Charmainttitle = maintitle->GetText();
 	
 				String^ Stringmainttitle = UTF8Converter(Charmainttitle);

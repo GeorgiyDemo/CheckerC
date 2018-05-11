@@ -2,37 +2,63 @@
 
 <restaurants>
 	<place>McDonald&apos;s
-		<menu>Картофель фри
-			<price>100</price>
-			<content>Мука</content>
-			<content>Соль</content>
+		<menu>Цезарь Ролл
+			<price>164</price>
+			<content>курица</content>
+			<content>салат</content>
+			<content>помидор</content>
+			<content>пармизан</content>
+			<content>пресная лепёшка</content>
+			<content>соус цезарь</content>
 		</menu>
-		<menu>ЧИЗБУРГЕР
-			<price>10000</price>
-			<content>мясо</content>
-			<content>кетчуп</content>
-		</menu>
-		<menu>БИГ МАК
-			<price>1000</price>
+		<menu>Гамбургер
+			<price>48</price>
 			<content>говядина</content>
+			<content>горчица</content>
 			<content>кетчуп</content>
+			<content>лук</content>
+			<content>огурец</content>
+		</menu>
+		<menu>Биг Мак
+			<price>130</price>
+			<content>говядина</content>
+			<content>кунжут</content>
+			<content>сыр чеддер</content>
+			<content>лук</content>
+			<content>огурец</content>
+			<content>листья салата</content>
+			<content>томатный соус</content>
+			<content>соус</content>
 		</menu>
 	</place>
-	<place>СОБАКА
-		<menu>POTATO
-			<price>1</price>
-			<content>MEOW1</content>
-			<content>MEOW2</content>
+
+	<place>Додо пицца
+		<menu>Утка Терияки
+			<price>435</price>
+			<content>томатный соус</content>
+			<content>филе утки</content>
+			<content>моцарелла</content>
+			<content>ананасы</content>
+			<content>черный кунжут</content>
+			<content>соус</content>
 		</menu>
-		<menu>CHEESEBURGER
-			<price>2</price>
-			<content>MEOW3</content>
-			<content>MEOW4</content>
+		<menu>Четыре сыра
+			<price>435</price>
+			<content>томатный соус</content>
+			<content>моцарелла</content>
+			<content>смесь сыров чеддер и пармезан</content>
 		</menu>
-		<menu>БИГ МАК
-			<price>3</price>
-			<content>MEOW5</content>
-			<content>MEOW6</content>
+		<menu>Двойная пепперони
+			<price>570</price>
+			<content>моцарелла</content>
+			<content>томатный соус</content>
+			<content>пепперони</content>
+		</menu>
+		<menu>Картофель с брынзой
+			<price>235</price>
+			<content>картофель</content>
+			<content>брынза</content>
 		</menu>
 	</place>
+
 </restaurants>

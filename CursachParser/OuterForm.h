@@ -65,6 +65,7 @@ namespace CursachParser {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(OuterForm::typeid));
 			this->OutLabel = (gcnew System::Windows::Forms::Label());
 			this->OutDataGridView = (gcnew System::Windows::Forms::DataGridView());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->OutDataGridView))->BeginInit();
@@ -73,9 +74,11 @@ namespace CursachParser {
 			// OutLabel
 			// 
 			this->OutLabel->AutoSize = true;
-			this->OutLabel->Location = System::Drawing::Point(23, 30);
+			this->OutLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->OutLabel->Location = System::Drawing::Point(22, 23);
 			this->OutLabel->Name = L"OutLabel";
-			this->OutLabel->Size = System::Drawing::Size(293, 13);
+			this->OutLabel->Size = System::Drawing::Size(403, 18);
 			this->OutLabel->TabIndex = 2;
 			this->OutLabel->Text = L"Подбор результатов с максимальной ценой и составом";
 			// 
@@ -87,24 +90,29 @@ namespace CursachParser {
 			this->OutDataGridView->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->OutDataGridView->Location = System::Drawing::Point(26, 66);
 			this->OutDataGridView->Name = L"OutDataGridView";
-			this->OutDataGridView->Size = System::Drawing::Size(549, 300);
+			this->OutDataGridView->Size = System::Drawing::Size(845, 338);
 			this->OutDataGridView->TabIndex = 3;
 			// 
 			// OuterForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(608, 405);
+			this->ClientSize = System::Drawing::Size(902, 433);
 			this->Controls->Add(this->OutDataGridView);
 			this->Controls->Add(this->OutLabel);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"OuterForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Результаты подбора";
+			this->Load += gcnew System::EventHandler(this, &OuterForm::OuterForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->OutDataGridView))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
+		private: System::Void OuterForm_Load(System::Object^  sender, System::EventArgs^  e) {
+			OutDataGridView->AutoResizeColumns(DataGridViewAutoSizeColumnsMode::AllCells);
+		}
 	};
 }
