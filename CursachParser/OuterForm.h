@@ -42,6 +42,8 @@ namespace CursachParser {
 	protected:
 
 	public: System::Windows::Forms::DataGridView^  OutDataGridView;
+	private: System::Windows::Forms::Button^  ExitButton;
+	public:
 
 	public:
 
@@ -68,6 +70,7 @@ namespace CursachParser {
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(OuterForm::typeid));
 			this->OutLabel = (gcnew System::Windows::Forms::Label());
 			this->OutDataGridView = (gcnew System::Windows::Forms::DataGridView());
+			this->ExitButton = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->OutDataGridView))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -90,14 +93,25 @@ namespace CursachParser {
 			this->OutDataGridView->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->OutDataGridView->Location = System::Drawing::Point(26, 66);
 			this->OutDataGridView->Name = L"OutDataGridView";
-			this->OutDataGridView->Size = System::Drawing::Size(845, 338);
+			this->OutDataGridView->Size = System::Drawing::Size(845, 274);
 			this->OutDataGridView->TabIndex = 3;
+			// 
+			// ExitButton
+			// 
+			this->ExitButton->Location = System::Drawing::Point(26, 364);
+			this->ExitButton->Name = L"ExitButton";
+			this->ExitButton->Size = System::Drawing::Size(145, 38);
+			this->ExitButton->TabIndex = 4;
+			this->ExitButton->Text = L"Назад";
+			this->ExitButton->UseVisualStyleBackColor = true;
+			this->ExitButton->Click += gcnew System::EventHandler(this, &OuterForm::ExitButton_Click);
 			// 
 			// OuterForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(902, 433);
+			this->Controls->Add(this->ExitButton);
 			this->Controls->Add(this->OutDataGridView);
 			this->Controls->Add(this->OutLabel);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
@@ -111,8 +125,13 @@ namespace CursachParser {
 
 		}
 #pragma endregion
+
 		private: System::Void OuterForm_Load(System::Object^  sender, System::EventArgs^  e) {
 			OutDataGridView->AutoResizeColumns(DataGridViewAutoSizeColumnsMode::AllCells);
 		}
-	};
+
+		private: System::Void ExitButton_Click(System::Object^  sender, System::EventArgs^  e) {
+			this->Hide();
+		}
+};
 }

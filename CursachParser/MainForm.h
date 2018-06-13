@@ -163,13 +163,20 @@ private: void StringSpliter(String^ str) {
 
 	private: System::Void BeginButton_Click(System::Object^  sender, System::EventArgs^  e) {
 		
-		StringSpliter(ContentTextBox->Text);
-		OuterForm^OuterForm_obj = gcnew OuterForm();
-		OuterForm_obj->OutDataGridView->DataSource = GlobalClass::GetXML(System::Convert::ToInt32(PriceTextBox->Text));
-		OuterForm_obj->OutLabel->Text = "Подбор результатов с максимальной ценой " + PriceTextBox->Text + " (руб.) и ингредиентами \"" + ContentTextBox->Text+"\"";
-		this->Hide();
-		OuterForm_obj->ShowDialog();
-		this->Show();
+		if (PriceTextBox->Text == "" || ContentTextBox->Text == "" ) {
+			MessageBox::Show("Заполните пустые поля");
+		}
+
+		else {
+			StringSpliter(ContentTextBox->Text);
+			OuterForm^OuterForm_obj = gcnew OuterForm();
+			OuterForm_obj->OutDataGridView->DataSource = GlobalClass::GetXML(System::Convert::ToInt32(PriceTextBox->Text));
+			OuterForm_obj->OutLabel->Text = "Подбор результатов с максимальной ценой " + PriceTextBox->Text + " (руб.) и ингредиентами \"" + ContentTextBox->Text + "\"";
+
+			this->Hide();
+			OuterForm_obj->ShowDialog();
+			this->Show();
+		}
 	}
 
 	private: System::Void ExitButton_Click(System::Object^  sender, System::EventArgs^  e) {

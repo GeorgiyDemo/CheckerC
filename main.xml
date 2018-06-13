@@ -60,5 +60,13 @@
 			<content>брынза</content>
 		</menu>
 	</place>
+		<place>СЕРЕГА
+		<menu>Пиво Жигули
+			<price>50</price>
+			<content>вода</content>
+			<content>ячмень</content>
+			<content>солод</content>
+		</menu>
+	</place>
 
 </restaurants>

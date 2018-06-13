@@ -37,8 +37,6 @@ namespace Globals
 		static  DataTable^ GetXML(int your_price)
 		{
 
-			String^ RETURN_STR = "";
-
 			DataTable ^table;
 			DataColumn ^column;
 			DataRow ^row;
@@ -53,7 +51,7 @@ namespace Globals
 				column = gcnew DataColumn(nameColumns->at(i), String::typeid);
 				table->Columns->Add(column);
 			}
-			
+			//tinyxml2
 			XMLDocument doc;
 			doc.LoadFile("../main.xml");
 			XMLElement* MainNode = doc.FirstChildElement("restaurants");
@@ -77,6 +75,7 @@ namespace Globals
 						String^ clistr1 = UTF8Converter(FoodContenttitle);
 
 						String^ content = "";
+						
 						bool FlagChecker = false;
 						int IntFlagIteration = 0;
 						for (XMLElement* FoodContent = menu->FirstChildElement("content"); FoodContent != NULL; FoodContent = FoodContent->NextSiblingElement("content")) {
